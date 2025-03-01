@@ -2,13 +2,14 @@ import React from "react";
 import "../styles/WhoWeAre.scss";
 import AllStaffPic from "../static/who-are-we-imgs/AllStaffPic.JPG";
 import ExecPic from "../static/who-are-we-imgs/ExecPic.JPG";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 const WhoWeAre = () => {
   return (
     <div className="who-we-are-container">
       <div className="content">
         <div className="image-large">
-          <img src={AllStaffPic} alt="Large Placeholder" />
+          <LazyLoadImage src={AllStaffPic} alt="Large Placeholder" />
         </div>
         <div className="text-section">
           <h2 className="title">Who We Are</h2>
@@ -17,7 +18,7 @@ const WhoWeAre = () => {
           </p>
         </div>
         <div className="image-small">
-          <img src={ExecPic} alt="Small Placeholder" />
+          <LazyLoadImage src={ExecPic} alt="Small Placeholder" />
         </div>
       </div>
     </div>

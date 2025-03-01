@@ -39,13 +39,13 @@ class Navbar extends React.Component {
   };
 
   componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-    window.addEventListener("resize", this.handleResize);
+    window.addEventListener('scroll', this.handleScroll, { passive: true });
+    window.addEventListener("resize", this.handleResize, { passive: true });
   }
 
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
-    window.addEventListener("resize", this.handleResize);
+    window.removeEventListener("resize", this.handleResize);
   } 
 
   handleStateChange = () => {

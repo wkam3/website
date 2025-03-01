@@ -1,3 +1,4 @@
+import { scan } from "react-scan";
 import React from "react";
 import FeaturedIssue from "../components/featuredIssue";
 import WhoWeAre from "../components/whoWeAre";
@@ -6,6 +7,10 @@ import Blogs from "../components/blogs.js";
 import Upcoming from "../components/upcomingEvents";
 import YouTrend from "../components/youTrend.js";
 import "../styles/Home.scss";
+
+scan({
+  enabled: false,
+});
 
 class Home extends React.Component {
   componentDidMount() {

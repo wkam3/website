@@ -1,7 +1,8 @@
 import React from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/scss/alice-carousel.scss";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import "../styles/FilmStrip.scss";
 import "../styles/FeaturedIssueGallery.scss";
 
@@ -31,7 +32,7 @@ class FilmStrip extends React.Component {
 
     const filmStripImages = images.map((img, index) => (
       <div className="img-container" key={index}>
-        <img className="film-strip-img" src={img} onDragStart={handleDragStart} alt={`Film Strip ${index + 1}`} />
+        <LazyLoadImage className="film-strip-img" src={img} onDragStart={handleDragStart} alt={`Film Strip ${index + 1}`} effect="blur" />
       </div>
     ));
 

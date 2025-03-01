@@ -4,14 +4,46 @@ import {teamInfo} from "./teamInfo"
 import Polaroid from "./polaroid";
 import "../styles/TeamGrid.scss";
 
+const isImageCached = (src) => {
+  return localStorage.getItem(src);
+};
+
+const cacheImage = (src) => {
+  const img = new Image();
+  img.src = src;
+  img.onload = () => {
+    localStorage.setItem(src, src); 
+  };
+};
+
 class TeamGrid extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      showModal: -1
+      showModal: -1,
     };
   }
 
+  componentDidMount() {
+    const images = teamInfo.map((teamMember) => teamMember.picture);
+    images.forEach((imgSrc) => {
+      if (!isImageCached(imgSrc)) {
+        cacheImage(imgSrc);
+      }
+    });
+    const cachedState = localStorage.getItem("teamState");
+    if (cachedState) {
+      this.setState(JSON.parse(cachedState));
+    }
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    // Save the state to localStorage whenever it changes
+    if (prevState.showModal !== this.state.showModal) {
+      localStorage.setItem("teamState", JSON.stringify(this.state));
+    }
+  }
+  
   openModal = value => {
     this.setState({
       showModal: value
@@ -23,6 +55,11 @@ class TeamGrid extends React.Component {
       showModal: -1
     });
   };
+
+  componentWillUnmount() {
+    // Cleanup when the component is unmounted
+    this.setState({ showModal: -1 });
+  }
 
   render () {
     return (

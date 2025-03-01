@@ -3,6 +3,7 @@ import "../styles/Blogs.scss";
 import img1 from "../static/blogs/img1.png";
 import img2 from "../static/blogs/img2.png";
 import img3 from "../static/blogs/img3.png";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 class Blogs extends React.Component {
 
@@ -43,13 +44,13 @@ class Blogs extends React.Component {
                 <div className="blogs-container">
                 {blogs.map((blog, index) => (
                     <div key={index} className="blog-card">
-                        <img
+                        <LazyLoadImage
                             className="image-container"
                             src={blog.image}
                             alt={`Blog ${index}`}
                             onClick={() => window.open(blog.url, '_blank')} 
                             style={{ cursor: 'pointer' }} 
-                        ></img>
+                        ></LazyLoadImage>
                         <div className="blog-details">
                             <p className="blog-title">{blog.title}
                             </p>

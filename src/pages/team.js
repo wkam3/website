@@ -1,7 +1,7 @@
-import React from "react";
+import React, { Suspense } from 'react';
 import FilmStrip from "../components/filmStrip";
-import TeamGrid from "../components/teamGrid";
 import "../styles/Team.scss";
+const LazyLoadedTeamGrid = React.lazy(() => import('../components/teamGrid'));
 
 class Team extends React.Component {
   componentDidMount() {
@@ -12,7 +12,9 @@ class Team extends React.Component {
     return (
       <div className="team-page">
         <FilmStrip />
-        <TeamGrid />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LazyLoadedTeamGrid />
+        </Suspense>
       </div>
     )
   }

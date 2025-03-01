@@ -7,6 +7,7 @@ import Team from "./pages/team";
 import Footer from "./components/footer";
 import { BrowserRouter, Routes, Route } from "react-router-dom"
 
+
 // setConfiguration({
 //   gutterWidth: 30,
 //   // containerWidths: [2000, 2000, 2000, 2000]
@@ -15,7 +16,6 @@ import { BrowserRouter, Routes, Route } from "react-router-dom"
 function App() {
   return (
     <div className="App" data-testid="App-element">
-      
       <BrowserRouter>
         <Navbar/>
         <Routes>
